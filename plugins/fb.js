@@ -6,7 +6,7 @@ let wk = Config.WORKTYPE == 'public' ? false : true
 const Language = require('../language');
 const Lang = Language.getString('facebook');
 
-Aqua.addrex({ pattern: 'fb ?(.*)', fromMe: wk, desc:Lang.FB_DESC, deleteCommand: false }, async (message, match) => {
+Aqua.addrex({ pattern: 'fb ?(.*)', fromMe: wk,deleteCommand: false }, async (message, match) => {
    const fblink = match[1]
    if (!fblink) return await message.client.sendMessage(message.jid,Lang.N_FB, MessageType.text, { quoted: message.data });
   var load= await message.client.sendMessage(message.jid,Lang.FB_DOWN, MessageType.text, { quoted: message.data });
