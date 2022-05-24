@@ -17,7 +17,7 @@ const ytmp3 = require('../lib/ytmp3');
 const { yt720 ,  yt480 ,  yt360 } = require('../lib/ytmp4');
 let wk = config.WORKTYPE == 'public' ? false : true
 
- Aqua.addrex({pattern: 'song ?(.*)', fromMe: wk, desc: Lang.SONG_DESC, deleteCommand: false}, (async (message, match) => {
+ Aqua.addrex({pattern: 'song ?(.*)', fromMe: wk, deleteCommand: false}, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text, {quoted: message.data});
         let arama = await yts(match[1]);
@@ -88,7 +88,7 @@ Aqua.addrex({pattern: 'asong ?(.*)', fromMe: wk, dontAddCommandList: true, delet
 
 }));
 
- Aqua.addrex({pattern: 'video ?(.*)', fromMe: wk, desc: Lang.VIDEO_DESC, deleteCommand: false }, (async (message, match) => {
+ Aqua.addrex({pattern: 'video ?(.*)', fromMe: wk,  deleteCommand: false }, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text, {quoted: message.data});    
     if (!match[1].includes('youtu')) return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text, {quoted: message.data});
@@ -167,7 +167,7 @@ Aqua.addrex({pattern: 'vid360 ?(.*)', fromMe: wk, dontAddCommandList: true, dele
         await message.client.sendMessage(message.jid,Buffer.from(vid.data), MessageType.video, {mimetype: Mimetype.mp4,  quoted: message.data , caption : config.CAPTION});
  }
 }));
-Aqua.addrex({pattern: 'yt ?(.*)', fromMe: wk, desc: Lang.YT_DESC, deleteCommand: false }, (async (message, match) => { 
+Aqua.addrex({pattern: 'yt ?(.*)', fromMe: wk, deleteCommand: false }, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text, {quoted: message.data}); 
 var vsn = ''
