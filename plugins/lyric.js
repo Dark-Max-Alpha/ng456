@@ -8,7 +8,7 @@ const Slang = Language.getString('lyrics');
 let wk = config.WORKTYPE == 'public' ? false : true
 
 
- Aqua.addrex({pattern: 'lyric ?(.*)', fromMe: wk, desc: Slang.LY_DESC, deleteCommand: false }, (async (message, match) => {
+ Aqua.addrex({pattern: 'lyric ?(.*)', fromMe: wk, deleteCommand: false }, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid, Slang.NEED, MessageType.text);
 
