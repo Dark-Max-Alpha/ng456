@@ -26,7 +26,7 @@ if (Config.LANG == 'EN')  SDESC = 'It searchs on YouTube.'
 if (Config.LANG == 'SI')  SDESC = 'එය spotify  හි සර්ච් කරයි.'
 
 
-Aqua.addrex({ pattern: 'getspo ?(.*)', fromMe: wk, desc:SDESC, deleteCommand: false }, async (message, match) => {
+Aqua.addrex({ pattern: 'getspo ?(.*)', fromMe: wk, deleteCommand: false }, async (message, match) => {
   if (match[1] === '') return await message.client.sendMessage(message.jid,n_song,MessageType.text, {quoted: message.data});    
   var load = await message.client.sendMessage(message.jid,SLang.SEARCHING,MessageType.text, {quoted: message.data});
   
@@ -52,7 +52,7 @@ Aqua.addrex({ pattern: 'getspo ?(.*)', fromMe: wk, desc:SDESC, deleteCommand: fa
   })
 
 
-Aqua.addrex({ pattern: 'spotify ?(.*)', fromMe: wk, desc:DESC, deleteCommand: false }, async (message, match) => {
+Aqua.addrex({ pattern: 'spotify ?(.*)', fromMe: wk, deleteCommand: false }, async (message, match) => {
   if (match[1] === '') return await message.client.sendMessage(message.jid,n_song,MessageType.text, {quoted: message.data}); 
   if (!match[1].includes('open.spotify.com')) return await message.client.sendMessage(message.jid,NEED,MessageType.text, {quoted: message.data});
   
